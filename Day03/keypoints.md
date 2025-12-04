@@ -1,0 +1,58 @@
+**Operator Types**
+
+- Arithmetic
+  - [+] ⇒ Addition
+  - [-] ⇒ Subtraction
+  - [*] ⇒ Multiplication
+  - [/] ⇒ Division
+  - [**] ⇒ Exponentiation
+  - [%] ⇒ Reminder
+  - [x++] or [x- -] ⇒ Post Increment or Decrement, return the value first then it will update the current value.
+  - [++x] or [- -x] ⇒ Pre Increment or Decrement, it will update the value first the then return the value.
+- Assignment
+  - [=] ⇒ Assign the value from right side to left side
+- Comparison
+  - [==] ⇒ Loosely equal operator
+  - [===] ⇒ Strict equal operator
+    - If the operands are of _different types_ return false.
+    - If both operands are _null_ or _undefined_, return true.
+    - If any of operands is NaN(Not a Number), return false.
+  - [>/≥] ⇒ Greater than / Greater than or equal to
+  - [</≤] ⇒ Lesser than / Lesser than or equal to
+- Relational
+- Logical
+  - [&&] ⇒ [operand1 && operand2] ⇒ Logical **AND**
+    - If first operand or left side operand can be converted to **_false,_** it will return first operand otherwise it will return second operand.
+  - [ || ] ⇒ [operand1 && operand2 ]⇒ Logical **OR**
+    - If first operand or left side operand can be converted to **_true,_** it will return first operand otherwise it will return second operand.
+      - console.log(1 || 'Cow') ⇒ 1
+      - console.log(0 || 'Cow') ⇒ ‘Cow’
+  - [??] ⇒ [operand1 ?? operand2] ⇒ null coalescing
+    - If first operand or left side operand is only **_null_** or **_undefined_** , it will return operand2. Otherwise operand1
+  - [!] ⇒ Logical **NOT**
+- Bitwise
+  - [&] ⇒ **AND** ⇒ Returns **1 only if both bits are 1, otherwise 0**
+    - 15 & 9 ⇒ 1111 & 1001 ⇒ 1001 ⇒ 9
+  - [ I ] ⇒ **OR** ⇒ Returns 0 **only if both bits are 0, otherwise 1**
+    - 15 | 9 ⇒ 1111 | 1001 ⇒ 1111 ⇒ 15
+  - [^] ⇒ **XOR ⇒** Returns **1 only if the bits are different, otherwise 0**
+    - 15 ^ 9 ⇒ 1111 ^ 1001 ⇒ 0110 ⇒ 6
+  - [<<] ⇒ **Left Shift** ⇒ Moves all bits to the left and fills right side with zero
+    - 15(1111) << 1 ⇒ 11110(30)
+    - 7(111) << 2 ⇒ 111100(28)
+      - Formula: Left shift by **_n = multiply by (2)^n_**
+      - Trick: add **_n_** number of zero to the right
+  - [>>] ⇒ **Right Shift** ⇒ Moves all bits to the right and removes bits on the right side
+    - 15(1111) >>1 ⇒ 111(7)
+    - 15(1111) >> 2 ⇒ 11(3)
+    - 9(1001) >> 1 ⇒ 100(4)
+      - Formula: right shift by **_n = divided by (2)^n_** and take the result
+      - Trick: remove **_n_** number of bits from the last
+- Conditional
+- Grouping
+  - p=1, q=2, r=3
+    - p+q\*r⇒ 7
+    - p+(q\*r)⇒ 7
+    - (p+q)\*r⇒ 9
+- typeof
+- instance of
