@@ -18,13 +18,25 @@ findMaximum(-3, -2);
 
 //#region [3. Function to Check if a String is a Palindrome]
 function checkPalindrome(text = "") {
-  let test = text.split("");
-  console.log(test);
+  let newText = "";
+  for (let i = text.length - 1; i >= 0; i--) {
+    newText += text.charAt(i);
+  }
+  if (text !== newText) {
+    console.log(`3. ${text} is not Palindrome.`);
+  } else {
+    console.log(`3. ${text} is Palindrome.`);
+  }
 }
-checkPalindrome("ansir");
+checkPalindrome("level");
 //#endregion
-//#region []
 
+//#region [4. Write a Function to Find Factorial of a Number]
+function findFactorial(num) {
+  if (num <= 1) return 1;
+  return num * findFactorial(num - 1);
+}
+console.log(`4. Factorial of ${5} is ${findFactorial(5)}`);
 //#endregion
 //#region []
 
