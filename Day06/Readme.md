@@ -13,7 +13,7 @@ Notes
     ```
 - Execute a function by calling its name with parentheses.
   ```jsx
-  printName(); // invoce the function
+  printName(); // invoke the function
   ```
 - Parameters vs. Arguments
   - _Parameters_ : Placeholders defined in the function declaration or function definition (inputs the function expects)
@@ -27,7 +27,7 @@ Notes
     ```jsx
     printName("Nasir"); // 'Nasir' is the argument
     ```
-  - When calling a function, provide concrete values for each parameter in the same order they were decalared
+  - When calling a function, provide concrete values for each parameter in the same order they were declared
     ```jsx
     function add(a, b) {
       return a + b;
@@ -39,7 +39,7 @@ Notes
   - When followed by a value (e.g., **`return x;`**), that value is passed back to the caller.
   - When used without a value (e.g., **`return;`**), the function outputs **`undefined`**.
   - **`return`** immediately exits the function, skipping any subsequent code.
-- Rest Paramter
+- Rest Parameter
   - Uses three dots (**`...`**) before the last parameter name (e.g., **`function foo(...rest)`**).
   - Collects all remaining arguments into a single array, allowing functions to handle variable numbers of inputs.
     ```jsx
@@ -76,34 +76,37 @@ Notes
   processData("Test", format); // Returns "Formatted: Test"
   ```
 - Pure functions
+
   - Always returns the same output for identical inputs.
   - No side effects (e.g., modifying external state or variables).
   - Relies only on input parameters. Doesn't alter external data or cause observable changes.
   -
+
   ```jsx
   // Pure
   function add(a, b) {
     return a + b;
   }
   // Impure (modifies external variable)
-  let greetingMesg = "Hola";
+  let greetingMessage = "Hola";
   function greeting(name){
-  	return greetingMesg + name;
+  	return greetingMessage + name;
   }
 
-  console.log(greeting("nasir");
-  console.log(greeting("nasir");
+  console.log(greeting("nasir"));
+  console.log(greeting("nasir"));
 
-  greetingMesg = "Hellow";
-  console.log(greeting("nasir");
-  console.log(greeting("nasir");
+  greetingMessage = "Hello";
+  console.log(greeting("nasir"));
+  console.log(greeting("nasir"));
 
   // Outputs
   Hola nasir
   Hola nasir
-  Hellow nasir
-  Hellow Nasir
+  Hello nasir
+  Hello Nasir
   ```
+
 - Arrow functions
   - Compact alternative to traditional functions using **`=>`**.
   - Implicit return when omitting curly braces (e.g., **`x => x * 2`**).

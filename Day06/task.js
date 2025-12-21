@@ -38,21 +38,67 @@ function findFactorial(num) {
 }
 console.log(`4. Factorial of ${5} is ${findFactorial(5)}`);
 //#endregion
+
+//#region [5. Write a function to Count Vowels in a String]
+function countVowels(str = "") {
+  let vowels = ["a", "e", "i", "o", "u"];
+  let vowelsCount = [];
+  for (let position = 0; position < str.length; position++) {
+    let currChar = str.charAt(position).toLowerCase();
+
+    let isVowel = vowels.includes(currChar);
+    if (isVowel) {
+      let isListedBefore = vowelsCount.includes(currChar);
+      if (!isListedBefore) {
+        vowelsCount.push(currChar);
+      }
+    }
+  }
+  console.log(`5. Total non-repeated vowels count: ${vowelsCount.length}`);
+}
+countVowels("nasir");
+//#endregion
+
+//#region [6. Write a Function to Capitalize the First Letter of Each Word in a Sentence]
+function capitalizeWords(sentence = "write a function to capitalize the first Letter In a sentence.") {
+  const wordsInSentence = sentence.split(" ");
+  const result = [];
+  for (let wordPosition = 0; wordPosition < wordsInSentence.length; wordPosition++) {
+    const currWord = wordsInSentence[wordPosition];
+    if (currWord) {
+      const capitalizedWord = currWord.charAt(0).toUpperCase() + currWord.slice(1);
+      result.push(capitalizedWord);
+    }
+  }
+  console.log(`6. ${result.join(" ")}`);
+}
+capitalizeWords();
+//#endregion
+
+//#region [7. Use an IIFE to Print “Hello, JavaScript!”]
+(function () {
+  console.log("7. Hello, JavaScript!");
+})();
+//#endregion
+
+//#region [8. Create a Simple Callback Function]
+function greet(name, callback) {
+  if (name) {
+    callback(name);
+  } else {
+    console.log(`8. You didn't put any name.`);
+  }
+}
+function printName(name) {
+  console.log(`8. Hello ${name}.`);
+}
+greet("Akash", printName);
+//#endregion
+
 //#region []
 
 //#endregion
-//#region []
 
-//#endregion
-//#region []
-
-//#endregion
-//#region []
-
-//#endregion
-//#region []
-
-//#endregion
 //#region []
 
 //#endregion
