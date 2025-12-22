@@ -95,10 +95,10 @@ function printName(name) {
 greet("Akash", printName);
 //#endregion
 
-//#region []
-
+//#region [9. Create Call Stack Execution Diagram for this flow]
+console.log(`9. See executionDiagram.png`);
 //#endregion
 
-//#region []
-
+//#region [10. Create Call Stack Execution Diagram for this flow]
+console.log(`10. See executionDiagram1/png`);
 //#endregion
