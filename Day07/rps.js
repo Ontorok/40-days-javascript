@@ -17,43 +17,11 @@
  * 5. After the Winner announcement, we may want to ask the user to play again or quit from the game.
  */
 let userName;
-const options = { 1: "rock", 2: "paper", 3: "scissors" };
-function playGame() {
-  console.log("Getting started the Rock Paper Scissor Game");
-  const userRandomChoice = getRandomNumber(3);
-  const userChoicePrompt = prompt("What's your choice: Rock - Paper - Scissors", options[userRandomChoice]);
-
-  const userChoice = userChoicePrompt.toLowerCase();
-  const isValidChoice = validateUserChoice(userChoice);
-  if (isValidChoice) {
-    const computerChoice = options[getRandomNumber(3)].toLowerCase();
-    console.log({ "User Selection": userChoice, "Computer Selection": computerChoice });
-    if (
-      (userChoice === options[1] && computerChoice === options[3]) ||
-      (userChoice === options[2] && computerChoice === options[1]) ||
-      (userChoice === options[3] && computerChoice === options[2])
-    ) {
-      console.log(`${userName} is Win!!`);
-    } else if (userChoice === computerChoice) {
-      console.log("This game is a Tie.");
-    } else if (
-      (userChoice === options[3] && computerChoice === options[1]) ||
-      (userChoice === options[1] && computerChoice === options[2]) ||
-      (userChoice === options[2] && computerChoice === options[3])
-    ) {
-      console.log(`Computer is Win!!`);
-    }
-    const playAgain = confirm("Do you want to play again?");
-    if (playAgain) {
-      playGame();
-    } else {
-      console.log("Thanks for playing. See you again!!");
-    }
-  } else {
-    console.error("Invalid Choice. Please try again");
-  }
+const OPTIONS = ["rock", "paper", "scissors"];
+function getUserName() {
+  const name = localStorage.getItem("rps-user-name");
+  return name;
 }
-
 function setUserName() {
   const nameFromLocalStorage = getUserName();
   if (nameFromLocalStorage) {
@@ -61,21 +29,60 @@ function setUserName() {
   } else {
     const name = prompt("Please mention your name");
     localStorage.setItem("rps-user-name", name);
+    userName = name;
   }
 }
-
-function getUserName() {
-  const name = localStorage.getItem("rps-user-name");
-  return name;
-}
-
 function getRandomNumber(upTo) {
   return Math.floor(Math.random() * upTo) + 1;
 }
 function validateUserChoice(choice) {
   const normalizeInput = choice.trim().toLowerCase();
-  const validChoices = Object.values(options);
-  return validChoices.includes(normalizeInput);
+  return OPTIONS.includes(normalizeInput);
+}
+function getWinner(userChoice, computerChoice) {
+  if (userChoice === computerChoice) return "tie";
+  if (
+    (userChoice === "rock" && computerChoice === "scissors") ||
+    (userChoice === "paper" && computerChoice === "rock") ||
+    (userChoice === "scissors" && computerChoice === "paper")
+  ) {
+    return "user";
+  }
+  return "computer";
+}
+function getUserChoice() {
+  const userRandomChoice = getRandomNumber(3);
+  const userChoicePrompt = prompt("What's your choice: Rock - Paper - Scissors", OPTIONS[userRandomChoice - 1]);
+  return userChoicePrompt ? userChoicePrompt.toLowerCase() : null;
+}
+function getComputerChoice() {
+  return OPTIONS[getRandomNumber(3) - 1].toLowerCase();
+}
+function announceResult(winner) {
+  if (winner === "user") {
+    console.log(`${userName} is Win!!!`);
+  } else if (winner === "computer") {
+    console.log(`Computer is Win!!!`);
+  } else {
+    console.log("This game is a Tie.");
+  }
 }
 setUserName();
-playGame();
+while (true) {
+  const userChoice = getUserChoice();
+  if (!userChoice) break;
+  if (!validateUserChoice(userChoice)) {
+    alert("Invalid Choice. Please try again");
+    continue;
+  }
+
+  const computerChoice = getComputerChoice();
+  const winner = getWinner(userChoice, computerChoice);
+  announceResult(winner);
+
+  const playAgain = confirm("Play Again??");
+  if (!playAgain) {
+    console.log("Thanks for playing!!");
+    break;
+  }
+}
