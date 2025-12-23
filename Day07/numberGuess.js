@@ -50,7 +50,7 @@ function getUserInput() {
 }
 
 function validateUserInput(input, min, max) {
-  return Number.isInteger(input) && input >= min && input6 <= max;
+  return Number.isInteger(input) && input >= min && input <= max;
 }
 
 function checkGuess(userInput, secretNumber) {
