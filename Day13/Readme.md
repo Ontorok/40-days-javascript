@@ -78,7 +78,7 @@ user.greet();
   greetFn.();
 ```
 
-### 3. What is the problem with the following code? Why isn't it logging the name correctly?
+### 4. What is the problem with the following code? Why isn't it logging the name correctly?
 
 ```
   const user2 = {
@@ -109,3 +109,70 @@ const user2 = {
 
 user2.greet();
 ```
+
+### 5. Create a Sports constructor function that takes name and number of players as arguments and assigns them using this keyword. Then, create two sports instances and log their details.
+
+#### Ans:
+
+```
+  function Sports(name, NoOfPlayers) {
+    this.name = name;
+    this.NoOfPlayers = NoOfPlayers;
+  }
+
+  const footBall = new Sports("Foot Ball", 22);
+
+  const cricket = new Sports("Cricket", 22);
+
+  console.log(footBall, cricket);
+```
+
+### 6. Can you attach the car1's `describe()` method to car2 object? Give all possible solutions that you can think of.
+
+```
+const car1 = {
+  brand: "Audi",
+  model: "A8",
+  describe: function () {
+    console.log(`This car is a ${this.brand} ${this.model}.`);
+  },
+};
+
+const car2 = {
+  brand: "BMW",
+  model: "X1",
+};
+```
+
+#### Ans:
+
+```
+// Solution - 1
+car1.describe.call(car2);
+
+// Solution - 2
+const car2Description = car1.describe.bind(car2);
+car2Description();
+```
+
+### 6. What will be the output of the following code and why?
+
+```
+const person = {
+  name: "Charlie",
+  sayHello: function () {
+    console.log(this.name);
+  },
+  sayHelloArrow: () => {
+    console.log(this.name);
+  },
+};
+
+person.sayHello();
+person.sayHelloArrow();
+```
+
+#### Ans: C
+
+- `sayHello()` is an object method. As it is a standard javascript function, this refer to that object who is invoking HTMLImageElement. person3 object in this case.
+- `sayHelloArrow()` is also an object method and it's an arrow function. As an arrow function doesn't have it's own `this`, rather that it capture from the lexical scope where it defined. `window` object in this case. And `window` object doesn't have name property. So `this.name` is `undefined`. But in this case window object has a built in property `name` and its value is "" so this.name pointing to the window.name which is empty string
